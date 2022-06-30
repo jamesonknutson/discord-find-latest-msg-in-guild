@@ -1,0 +1,40 @@
+{
+  "name": "find-latest-discord-msg-in-guild",
+  "version": "1.0.0",
+  "description": "Finds the latest Discord Message sent by a specific User in a Discord Guild in the least time & least API calls possible.",
+  "main": "./dist/index.js",
+  "types": "./types/index.d.ts",
+  "type": "commonjs",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc",
+    "start": "node ./dist/index.js",
+    "dev": "tsc-watch --onSuccess \"node ./dist/index.js\""
+  },
+  "keywords": [ "discord", "discord.js", "discordjs", "latest discord message", "discord guild", "find discord message" ],
+  "author": "jamesonknutson (https://github.com/jamesonknutson)",
+  "license": "MIT",
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.30.0",
+    "@typescript-eslint/parser": "^5.30.0",
+    "eslint": "^8.18.0",
+    "eslint-config-prettier": "^8.5.0",
+    "prettier": "^2.7.1",
+    "tslib": "^2.4.0",
+    "typescript": "^4.8.0-dev.20220628"
+  },
+  "dependencies": {
+    "discord.js": "^13"
+  },
+  "homepage": "https://github.com/jamesonknutson/find-latest-discord-msg-in-guild",
+  "bugs": {
+    "url": "https://github.com/jamesonknutson/find-latest-discord-msg-in-guild/issues"
+  },
+  "contributors": [
+    {
+      "url": "https://github.com/jamesonknutson",
+      "name": "jamesonknutson"
+    }
+  ],
+  "readme": "./README.md"
+}

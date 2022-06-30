@@ -1,0 +1,15 @@
+.gitignore
+*.md
+*.log
+*.lock
+*.js
+node_modules*
+node_modules
+**/node_modules/**
+
+!**/.eslintrc*
+out
+dist
+*.svg
+*.ico
+*.json
