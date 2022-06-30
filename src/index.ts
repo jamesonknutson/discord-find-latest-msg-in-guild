@@ -41,13 +41,30 @@ function reduceColl (opts: {
   condition  : 'LATEST' | 'EARLIEST'
   initValue? : Message | null
   userId?    : string | null
-}): Message | null {
+}, logging = false): Message | null {
   return opts.messages.reduce((best, message) => {
-    return ((typeof opts?.userId === 'string' && message.author.id !== opts.userId)
-      || (best && opts.condition === `EARLIEST` && best.createdTimestamp < message.createdTimestamp)
-      || (best && opts.condition === `LATEST` && best.createdTimestamp > message.createdTimestamp))
-      ? best
-      : message
+    if (typeof opts?.userId === 'string' && message.author.id !== opts.userId) {
+      if (logging) console.log(`Message ID '${message.id}' was not sent by User ID '${opts.userId}', returning best.`)
+      return best
+    }
+    
+    if (!best) {
+      if (logging) console.log(`No best value found yet, so returning Message ID '${message.id}' as best to init.`)
+      return message
+    }
+    
+    if (opts.condition === 'LATEST' && message.createdTimestamp > best.createdTimestamp) {
+      if (logging) console.log(`Message ID '${message.id}' was created after best (created @ ${best.createdTimestamp}), returning current message in place of best.`)
+      return message
+    }
+    
+    if (opts.condition === 'EARLIEST' && message.createdTimestamp < best.createdTimestamp) {
+      if (logging) console.log(`Message ID '${message.id}' was created before best (created @ ${best.createdTimestamp}), returning current message in place of best.`)
+      return message
+    }
+    
+    if (logging) console.log(`Message ID '${message.id}' did not pass any preference conditions, returning best.`)
+    return best
   }, opts?.initValue ?? null as Message | null)
 }
 
