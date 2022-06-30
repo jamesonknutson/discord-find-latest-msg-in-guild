@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Finds the latest Discord Message sent by a specific User in a Discord Guild in the least time & least API calls possible.",
   "main": "./dist/index.js",
-  "types": "./types/index.d.ts",
+  "types": "./dist/index.d.ts",
   "type": "commonjs",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
