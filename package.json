@@ -1,6 +1,6 @@
 {
   "name": "discord-find-latest-msg-in-guild",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Finds the latest Discord Message sent by a specific User in a Discord Guild in the least time & least API calls possible.",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -11,6 +11,7 @@
     "start": "node ./dist/index.js",
     "dev": "tsc-watch --onSuccess \"node ./dist/index.js\""
   },
+  "files": ["/dist"],
   "keywords": [ "discord", "discord.js", "discordjs", "latest discord message", "discord guild", "find discord message" ],
   "author": "jamesonknutson (https://github.com/jamesonknutson)",
   "license": "MIT",
