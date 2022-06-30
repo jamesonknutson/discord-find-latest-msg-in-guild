@@ -88,12 +88,15 @@ async function loadChannelStates (opts: RecursiveLatestMessageOpts): Promise<Req
   const collection = new Collection<string, ChannelState>()
   
   for (const [ id, channel ] of textOnly) {
+    /* const messages = channel.messages.cache.size > 0
+      ? channel.messages.cache
+      : await channel.messages.fetch() */
     const messages = channel.messages.cache.size > 0
       ? channel.messages.cache
       : await channel.messages.fetch()
     
     if (messages.size > 0) {
-      if (opts.logging) console.log(`Found ${messages.size} Messages in Channel ID: ${id}, initializing State.`)
+      if (opts.logging) console.log(`Found ${messages.size} Messages in Channel ${channel.name}, initializing State.`)
       collection.set(id, {
         channel  : channel,
         more     : true,
@@ -172,7 +175,7 @@ async function recursiveFindLatest (opts: RecursiveLatestMessageOpts, iteration 
     if (opts.logging) console.log(`${prefix0} No valid states left, the User has never sent a Message in any TextChannel in this Guild. Returning null.`)
     return null
   } else if (loaded.states.size === 1 && firstState && firstState.recent) {
-    if (opts.logging) console.log(`${prefix0} Only left with one valid state that has a recent valid Message in it. Returning Message ID ${firstState.recent.id} in Channel ID ${firstState.channel.id}`)
+    if (opts.logging) console.log(`${prefix0} Only left with one valid state that has a recent valid Message in it. Returning Message ID ${firstState.recent.id} in Channel ${firstState.channel.name}`)
     return firstState.recent
   }
   
@@ -185,8 +188,8 @@ async function recursiveFindLatest (opts: RecursiveLatestMessageOpts, iteration 
     } else if (value.more) {
       if (opts.logging) console.log(`${prefix1} Channel has more Messages in it, but does not have a recent valid Message found in it yet. Fetching earlier Messages now.`)
       const messages     = await loadEarlierMessages(value)
-      const recent       = reduceColl({ condition: 'LATEST', messages, userId: opts.userId, initValue: value.recent })
-      const earliest     = reduceColl({ condition: 'EARLIEST', messages, initValue: value.earliest })
+      const recent       = reduceColl({ condition: 'LATEST', messages, userId: opts.userId, initValue: value.recent }, opts.logging)
+      const earliest     = reduceColl({ condition: 'EARLIEST', messages, initValue: value.earliest }, opts.logging)
       const updatedState = {
         channel  : value.channel,
         recent   : recent,
