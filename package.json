@@ -1,6 +1,6 @@
 {
   "name": "discord-find-latest-msg-in-guild",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Finds the latest Discord Message sent by a specific User in a Discord Guild in the least time & least API calls possible.",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
