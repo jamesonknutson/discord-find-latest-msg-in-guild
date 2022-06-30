@@ -1,5 +1,5 @@
 {
-  "name": "find-latest-discord-msg-in-guild",
+  "name": "discord-find-latest-msg-in-guild",
   "version": "1.0.0",
   "description": "Finds the latest Discord Message sent by a specific User in a Discord Guild in the least time & least API calls possible.",
   "main": "./dist/index.js",
@@ -26,9 +26,9 @@
   "dependencies": {
     "discord.js": "^13"
   },
-  "homepage": "https://github.com/jamesonknutson/find-latest-discord-msg-in-guild",
+  "homepage": "https://github.com/jamesonknutson/discord-find-latest-msg-in-guild",
   "bugs": {
-    "url": "https://github.com/jamesonknutson/find-latest-discord-msg-in-guild/issues"
+    "url": "https://github.com/jamesonknutson/discord-find-latest-msg-in-guild/issues"
   },
   "contributors": [
     {

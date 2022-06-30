@@ -1,4 +1,4 @@
-# find-latest-discord-msg-in-guild
+# discord-find-latest-msg-in-guild
 
 ## About
 Finds the latest Message sent in a specific Discord Guild by a specific Discord User. Written in [response to this StackOverflow Question](https://stackoverflow.com/questions/72764610/how-do-i-get-the-last-message-sent-by-a-specific-user/72796357#72796357). I likely will not be updating this repository, but if you have a specific feature request or bug to report just open up an Issue and I will see what I can do, if I have time. PRs are welcome if you'd prefer to DIY.
@@ -8,20 +8,20 @@ Requires [Discord.JS](https://github.com/discordjs/discord.js) (`npm install dis
 
 ## Installation
 ```
-npm install find-latest-discord-msg-in-guild --save
+npm install discord-find-latest-msg-in-guild --save
 ```
 
 ## Example usage
 Install required dependencies:
 ```
-npm install discord.js find-latest-discord-msg-in-guild --save
+npm install discord.js discord-find-latest-msg-in-guild --save
 ```
 
 Find a [Guild](https://discord.js.org/#/docs/discord.js/main/class/Guild) (or [GuildResolvable](https://discord.js.org/#/docs/discord.js/main/typedef/GuildResolvable)) and a [User](https://discord.js.org/#/docs/discord.js/main/class/User) (or [UserResolvable](https://discord.js.org/#/docs/discord.js/main/typedef/UserResolvable)) that you want to find the latest message for in said Guild.
 
 ```js
 const { Client, Message } = require(`discord.js`)
-const { getLatestMessageInGuildForUser } = require(`find-latest-discord-msg-in-guild`)
+const { getLatestMessageInGuildForUser } = require(`discord-find-latest-msg-in-guild`)
 
 const client = new Client({ intents: [ 'GUILDS', 'GUILD_MESSAGES' ] })
 await client.login(`my-discord-bot-token`)
@@ -53,7 +53,7 @@ if (latestMessage instanceof Message) {
 ## Links
 - [Discord.JS Repository](https://github.com/discordjs/discord.js)
 - [Discord.JS Documentation](https://discord.js.org/#/docs/discord.js/main/general/welcome)
-- [Package on NPM](https://www.npmjs.com/package/find-latest-discord-msg-in-guild)
+- [Package on NPM](https://www.npmjs.com/package/discord-find-latest-msg-in-guild)
 
 ## Contributing
 Make an Issue. Format it however you like. If you're capable, make a Pull Request with whatever changes you have in mind while you're at it.
