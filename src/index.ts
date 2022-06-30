@@ -97,8 +97,8 @@ async function loadChannelStates (opts: RecursiveLatestMessageOpts): Promise<Req
       collection.set(id, {
         channel  : channel,
         more     : true,
-        earliest : reduceColl({ condition: 'LATEST', messages, userId: opts.userId }),
-        recent   : reduceColl({ condition: 'EARLIEST', messages }),
+        earliest : reduceColl({ condition: 'EARLIEST', messages }, opts.logging),
+        recent   : reduceColl({ condition: 'LATEST', messages, userId: opts.userId }, opts.logging),
       })
     } else if (opts.logging) {
       console.log(`No messages found in Channel ID: ${id}, skipping this Channel entirely.`)
